@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>History</title>
+
+    <style>
+        body {
+            font-family: Arial;
+
+            /* 🔥 FULL SCREEN BACKGROUND */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('/static/uploads/bg6.jpg') no-repeat center center fixed;
+            background-size: cover;
+
+            text-align: center;
+            color: white;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        /* GLASS BOX */
+        .box {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            padding: 20px;
+            border-radius: 15px;
+            width: 80%;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        table {
+            margin: auto;
+            background: rgba(255,255,255,0.9);
+            color: black;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid black;
+        }
+
+        img {
+            width: 80px;
+        }
+
+        a {
+            display: block;
+            margin-top: 15px;
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .clear {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <h2>{{ session['user'] }}'s History</h2>
+
+        <table>
+            <tr>
+                <th>Image</th>
+                <th>Result</th>
+            </tr>
+
+            {% for row in data %}
+            <tr>
+                <td>
+                    <img src="{{ url_for('static', filename='uploads/' + row[0]) }}">
+                </td>
+                <td>{{ row[1] }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+
+        <a href="/clear_history" class="clear">Clear History</a>
+        <a href="/upload">Back</a>
+    </div>
+
+</body>
+</html>

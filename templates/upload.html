@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Upload Fingerprint</title>
+
+    <style>
+        body {
+            font-family: Arial;
+
+            /* 🔥 FULL SCREEN BACKGROUND */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                        url('/static/uploads/bg4.jpg') no-repeat center center fixed;
+            background-size: cover;
+
+            text-align: center;
+            color: white;
+
+            margin: 0;
+            padding: 0;
+        }
+
+        /* GLASS EFFECT */
+        .box {
+            background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 320px;
+            margin: auto;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        input {
+            margin: 10px 0;
+        }
+
+        button {
+            padding: 10px;
+            width: 100%;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: darkred;
+        }
+
+        a {
+            display: block;
+            margin-top: 10px;
+            color: white;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Welcome {{ session['user'] }}</h2>
+
+    <div class="box">
+        <h3>Upload Fingerprint</h3>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="fingerprint" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        <a href="/history">View History</a>
+        <a href="/logout">Logout</a>
+    </div>
+
+</body>
+</html>
